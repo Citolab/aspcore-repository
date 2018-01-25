@@ -45,7 +45,7 @@ using (new OverrideDefaultValues()) {
 
 IEvent store is a minimalistic event store that has two methods: Save(event) and Get(size, page)
 
-### In Memory databas
+### In Memory database
 ```C#
 services.AddEventStore<Event>(new InMemoryEventStoreOptions("MyEvents"));
 ```
