@@ -1,6 +1,6 @@
 ﻿# Citolab Repository for ASP.NET Core
 
-This repository that can be configured to use MongoDB or an InMemory database. The last one can be very handy in UnitTests.
+This repository that can be configured to use MongoDB or an InMemory database.
 There is also experimental support for SQL Server.
 
 ## IRepository Usage
@@ -29,7 +29,42 @@ services.AddRepository(new SqlServerDatabaseOptions("MyDatabase", Configuration.
 
 ### Model
 
-Each class that should be an entity in the database should inherit from ObjectBase.
+An entity that must be stored in the database should inherit from ObjectBase.
+
+
+### API
+
+In the example below an example controller that uses all methods:
+
+```C#
+public class UserController : Controller
+{
+    private readonly IRepositoryFactory _repositoryFactory;
+
+    public UserController(IRepositoryFactory repositoryFactory) => 
+        _repositoryFactory = repositoryFactory;
+        
+    [HttpGet("{id}")]
+    public Task<User> Get(Guid id) => 
+        _repositoryFactory.GetRepository<User>().GetAsync(id);
+
+    [HttpGet]
+    public Task<IEnumerable<User>> Get() => 
+        Task.Run(() => _repositoryFactory.GetRepository<User>().AsQueryable().AsEnumerable());
+
+    [HttpPost]
+    public Task<User> Post([FromBody] User user) =>
+        _repositoryFactory.GetRepository<User>().AddAsync(user);
+
+    [HttpPut]
+    public Task<bool> ChangeName([FromBody] User user) =>
+        _repositoryFactory.GetRepository<User>().UpdateAsync(user);
+
+    [HttpDelete("{id}")]
+    public Task<bool> Delete(Guid id) =>
+        _repositoryFactory.GetRepository<User>().DeleteAsync(id);
+}
+```
 
 ### Default Values
 Created and LastModified are filled by default (existing values will be overwritten). CreatedByUserId and LastModifiedByUserId are provided by a registered instance of ILoggedInUserProvider. By default this won't fill a userId. You can write your own instance of ILoggedInUserProvider and register it **before** calling .AddRepository.
