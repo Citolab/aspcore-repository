@@ -20,7 +20,7 @@ services.AddRepository(new MongoDatabaseOptions("MyDatabase", Configuration.GetC
 
 ### Sql Server
 
-Sql server support is very experimental. 
+Sql server support is very experimental and will contain bugs. 
 ```C#
 var services = new ServiceCollection();
 services.AddRepository(new SqlServerDatabaseOptions("MyDatabase", Configuration.GetConnectionString("SqlServer")));
@@ -90,3 +90,29 @@ services.AddEventStore<Event>(new InMemoryEventStoreOptions("MyEvents"));
 services.AddEventStore<Event>(new MongoEventStoreOptions("MyDatabase", Configuration.GetConnectionString("MongoDB"), "MyEvents"));
 ```
 
+### API
+
+In the example below a service that call the two methods. The Get method will return rows from old to new.
+
+```C#
+public class EventStoreService
+{
+    private readonly IEventStore<Event> _eventStore;
+
+    public EventStoreService(IEventStore<Event> eventStore) => _eventStore = eventStore;
+
+    public void Save(Event e) => _eventStore.Save(e);
+
+    public IEnumerable<Event> GetAll()
+    {
+        var all = new List<Event>();
+        for (var page = 1; page < int.MaxValue; page++)
+        {
+            var rows = _eventStore.Get(50, page).ToList();
+            all.AddRange(rows);
+            if (!rows.Any()) break;
+        }
+        return all;
+    }
+}
+```
