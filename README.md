@@ -1,11 +1,11 @@
 ﻿# Citolab Repository for ASP.NET Core
 
-This repository that can be configured to use MongoDB or an InMemory database.
+This is a repository library that can be configured to use MongoDB or an in-memory database (using MemoryCache).
 There is also experimental support for SQL Server.
 
 ## IRepository Usage
 
-### In Memory database
+### In-memory database
 ```C#
 var services = new ServiceCollection();
 services.AddInMemoryRepository();
@@ -34,7 +34,7 @@ An entity that must be stored in the database should inherit from ObjectBase.
 
 ### API
 
-In the example below an example controller that uses all methods:
+In the example below a Web API controller that uses all methods:
 
 ```C#
 public class UserController : Controller
@@ -80,7 +80,7 @@ using (new OverrideDefaultValues()) {
 
 IEvent store is a minimalistic event store that has two methods: Save(event) and Get(size, page)
 
-### In Memory database
+### In-memory database
 ```C#
 services.AddEventStore<Event>(new InMemoryEventStoreOptions("MyEvents"));
 ```
