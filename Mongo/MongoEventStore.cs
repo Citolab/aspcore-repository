@@ -37,7 +37,7 @@ namespace Citolab.Repository.Mongo
                 {
                     environment = "testing";
                 }
-                var mongoDatabase = client.GetDatabase($"{options.CollectionName}-{environment}");
+                var mongoDatabase = client.GetDatabase($"{mongoOptions.DatabaseName}-{environment}");
                 Collection = mongoDatabase.GetCollection<TEvent>(options.CollectionName);
             }
             catch (Exception exception)
