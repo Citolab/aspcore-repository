@@ -15,7 +15,17 @@ namespace Citolab.Repository.Extensions
 {
     public static class Extensions
     {
-        public static void AddRepository(this IServiceCollection services, IRepositoryOptions options)
+        public static void AddInMemoryRepository(this IServiceCollection services) =>
+            services.AddRepository(new InMemoryDatabaseOptions());
+
+        public static void AddMongoRepository(this IServiceCollection services, string databaseName, string connectionString) =>
+            services.AddRepository(new MongoDatabaseOptions(databaseName, connectionString));
+
+        public static void AddSqlServerRepository(this IServiceCollection services, string databaseName, string connectionString) =>
+            services.AddRepository(new SqlServerDatabaseOptions(databaseName, connectionString));
+
+
+        private static void AddRepository(this IServiceCollection services, IRepositoryOptions options)
         {
             if (services == null)
             {

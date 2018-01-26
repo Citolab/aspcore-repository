@@ -8,13 +8,13 @@ There is also experimental support for SQL Server.
 ### In Memory database
 ```C#
 var services = new ServiceCollection();
-services.AddRepository(new InMemoryDatabaseOptions());
+services.AddInMemoryRepository();
 
 ```
 ### MongoDB
 ```C#
 var services = new ServiceCollection();
-services.AddRepository(new MongoDatabaseOptions("MyDatabase", Configuration.GetConnectionString("MongoDB")));
+services.AddMongoRepository("MyDatabase", Configuration.GetConnectionString("MongoDB"));
 
 ```
 
@@ -23,7 +23,7 @@ services.AddRepository(new MongoDatabaseOptions("MyDatabase", Configuration.GetC
 Sql server support is very experimental and will contain bugs. 
 ```C#
 var services = new ServiceCollection();
-services.AddRepository(new SqlServerDatabaseOptions("MyDatabase", Configuration.GetConnectionString("SqlServer")));
+services.AddSqlServerRepository("MyDatabase", Configuration.GetConnectionString("SqlServer"));
 
 ```
 
