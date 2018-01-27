@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2024
+VisualStudioVersion = 15.0.27130.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Citolab.Repository", "Citolab.Repository.csproj", "{4154E735-0DF3-48FD-AAF5-DA5A0B2FBA77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Citolab.Repository", "Base\Citolab.Repository.csproj", "{B1AD0FF7-D98E-40AF-B689-C7E03AFD5265}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Citolab.Repository.Mongo", "Mongo\Citolab.Repository.Mongo.csproj", "{E3F91F31-20BE-427E-B1C5-18DFDFF9223B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Citolab.Repository.SqlServer", "SqlServer\Citolab.Repository.SqlServer.csproj", "{DFBAFD0F-43D7-4BC8-B936-C9F678DA34F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4154E735-0DF3-48FD-AAF5-DA5A0B2FBA77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4154E735-0DF3-48FD-AAF5-DA5A0B2FBA77}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4154E735-0DF3-48FD-AAF5-DA5A0B2FBA77}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4154E735-0DF3-48FD-AAF5-DA5A0B2FBA77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1AD0FF7-D98E-40AF-B689-C7E03AFD5265}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1AD0FF7-D98E-40AF-B689-C7E03AFD5265}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1AD0FF7-D98E-40AF-B689-C7E03AFD5265}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1AD0FF7-D98E-40AF-B689-C7E03AFD5265}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3F91F31-20BE-427E-B1C5-18DFDFF9223B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3F91F31-20BE-427E-B1C5-18DFDFF9223B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3F91F31-20BE-427E-B1C5-18DFDFF9223B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3F91F31-20BE-427E-B1C5-18DFDFF9223B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFBAFD0F-43D7-4BC8-B936-C9F678DA34F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFBAFD0F-43D7-4BC8-B936-C9F678DA34F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFBAFD0F-43D7-4BC8-B936-C9F678DA34F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFBAFD0F-43D7-4BC8-B936-C9F678DA34F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

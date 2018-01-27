@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using Citolab.Repository.Decorators;
-using Citolab.Repository.Model;
 using Citolab.Repository.Options;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using MongoDB.Driver;
-using IMongoDatabaseOptions = Citolab.Repository.Options.IMongoDatabaseOptions;
+using IMongoDatabaseOptions = Citolab.Repository.Mongo.Options.IMongoDatabaseOptions;
 
 namespace Citolab.Repository.Mongo
 {

@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Citolab.Repository.Model;
-using Citolab.Repository.Options;
-using Microsoft.Extensions.Caching.Memory;
-
-namespace Citolab.Repository.Options
+﻿namespace Citolab.Repository.Mongo.Options
 {
     public class MongoDatabaseOptions : IMongoDatabaseOptions
     {

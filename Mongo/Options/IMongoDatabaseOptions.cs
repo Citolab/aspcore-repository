@@ -1,4 +1,6 @@
-﻿namespace Citolab.Repository.Options
+﻿using Citolab.Repository.Options;
+
+namespace Citolab.Repository.Mongo.Options
 {
     public interface IMongoDatabaseOptions: IRepositoryOptions
     {
