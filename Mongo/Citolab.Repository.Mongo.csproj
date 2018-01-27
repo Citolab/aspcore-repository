@@ -1,7 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Marcel Hoekstra, Tjeerd Hans Terpstra</Authors>
+    <Company>Citolab</Company>
+    <Description>Repository using Mongo database</Description>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="MongoDB.Driver" Version="2.5.0" />
