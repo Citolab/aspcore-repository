@@ -3,6 +3,11 @@
 This is a repository library that can be configured to use MongoDB or an in-memory database (using MemoryCache).
 There is also experimental support for SQL Server.
 
+Packages can be installed using NuGet:
+- Install-Package Citolab.Repository (in-memory)
+- Install-Package Citolab.Repository.Mongo (MongoDB)
+- Install-Package Citolab.Repository.SqlServer (SQL server)
+
 ## IRepository Usage
 
 ### In-memory database
@@ -75,44 +80,14 @@ using (new OverrideDefaultValues()) {
     // your code here
 }
 ```
+### Caching
 
-## IEventStore Usage
-
-IEvent store is a minimalistic event store that has two methods: Save(event) and Get(size, page)
-
-### In-memory database
-```C#
-services.AddEventStore<Event>(new InMemoryEventStoreOptions("MyEvents"));
-```
-### MongoDB
+Caching can be added using Mongo or SQL Server as database too. Adding the caching attribute above your model classes; these entities will be kept in the MemoryCache. The cache will be updated when entities are changed.
 
 ```C#
-services.AddEventStore<Event>(new MongoEventStoreOptions("MyDatabase", Configuration.GetConnectionString("MongoDB"), "MyEvents"));
-```
-
-### API
-
-In the example below a service that call the two methods. The Get method will return rows from old to new.
-
-```C#
-public class EventStoreService
+[Cache(300)]
+public class User : ObjectBase
 {
-    private readonly IEventStore<Event> _eventStore;
-
-    public EventStoreService(IEventStore<Event> eventStore) => _eventStore = eventStore;
-
-    public void Save(Event e) => _eventStore.Save(e);
-
-    public IEnumerable<Event> GetAll()
-    {
-        var all = new List<Event>();
-        for (var page = 1; page < int.MaxValue; page++)
-        {
-            var rows = _eventStore.Get(50, page).ToList();
-            all.AddRange(rows);
-            if (!rows.Any()) break;
-        }
-        return all;
-    }
+	//properties
 }
 ```
