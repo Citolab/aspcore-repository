@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
-<package >
+<package>
   <metadata>
-    <id>Citolab.Repository</id>
+    <id>Citolab.Repository.Mongo</id>
     <version>$version$</version>
-    <title>Repository</title>
+    <title>Mongo Repository</title>
     <authors>Tjeerd Hans Terpstra, Marcel Hoekstra</authors>
     <owners>Citolab</owners>
     <projectUrl>https://github.com/Citolab/aspcore-repository</projectUrl>
     <iconUrl>https://avatars0.githubusercontent.com/u/32355044</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Base logic for repository for MongoDB and in-memory database.</description>
+    <description>Repository for MongoDB.</description>
     <releaseNotes></releaseNotes>
     <copyright>Copyright 2018</copyright>
     <tags>ASP.NET Core Repository Mongo MongoDB InMemory</tags>
