@@ -1,6 +1,4 @@
-﻿using Citolab.Repository.Model;
-
-namespace Citolab.Repository
+﻿namespace Citolab.Repository
 {
     /// <summary>
     ///     Interface for repository factory
@@ -12,6 +10,6 @@ namespace Citolab.Repository
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        IRepository<T> GetRepository<T>() where T : ObjectBase, new();
+        IRepository<T> GetRepository<T>() where T : Model, new();
     }
 }

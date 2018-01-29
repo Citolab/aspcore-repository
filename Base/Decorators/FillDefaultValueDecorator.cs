@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Citolab.Repository.Helpers;
-using Citolab.Repository.Model;
 using Microsoft.Extensions.Caching.Memory;
 
 namespace Citolab.Repository.Decorators
@@ -10,7 +9,7 @@ namespace Citolab.Repository.Decorators
     ///     Used to fill default values like, created, createdby, modified, modifiedby, id etc..
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class FillDefaultValueDecorator<T> : RepositoryDecoratorBase<T> where T : ObjectBase, new()
+    public class FillDefaultValueDecorator<T> : RepositoryDecoratorBase<T> where T : Model, new()
     {
         private readonly ILoggedInUserProvider _loggedInUserProvider;
 

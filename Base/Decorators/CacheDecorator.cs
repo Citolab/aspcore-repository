@@ -6,7 +6,6 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Citolab.Repository.Extensions;
 using Citolab.Repository.Helpers;
-using Citolab.Repository.Model;
 using Microsoft.Extensions.Caching.Memory;
 
 namespace Citolab.Repository.Decorators
@@ -15,7 +14,7 @@ namespace Citolab.Repository.Decorators
     ///     Decorator to use memory cache
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class CacheDecorator<T> : RepositoryDecoratorBase<T> where T : ObjectBase, new()
+    public class CacheDecorator<T> : RepositoryDecoratorBase<T> where T : Model, new()
     {
         private readonly string _collectionKey = "CachedCollection";
         private readonly object _lockCollection = new object();
@@ -38,15 +37,15 @@ namespace Citolab.Repository.Decorators
                 : new MemoryCacheEntryOptions().SetSlidingExpiration(TimeSpan.FromSeconds(cacheTimeInSeconds));
         }
 
-        private ConcurrentDictionary<string, ObjectBase> Collection
+        private ConcurrentDictionary<string, Model> Collection
         {
             get
             {
-                ConcurrentDictionary<string, ObjectBase> coll;
-                if (MemoryCache == null) return new ConcurrentDictionary<string, ObjectBase>();
+                ConcurrentDictionary<string, Model> coll;
+                if (MemoryCache == null) return new ConcurrentDictionary<string, Model>();
                 return MemoryCache.TryGetValue(_collectionKey, out coll)
                     ? coll
-                    : new ConcurrentDictionary<string, ObjectBase>();
+                    : new ConcurrentDictionary<string, Model>();
             }
         }
 

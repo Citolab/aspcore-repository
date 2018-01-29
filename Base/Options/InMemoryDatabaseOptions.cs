@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Citolab.Repository.Model;
 using Microsoft.Extensions.Caching.Memory;
 
 namespace Citolab.Repository.Options

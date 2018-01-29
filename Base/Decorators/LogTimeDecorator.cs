@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
-using Citolab.Repository.Model;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 
 namespace Citolab.Repository.Decorators
 {
-    public class LogTimeDecorator<T> : RepositoryDecoratorBase<T> where T : ObjectBase, new()
+    public class LogTimeDecorator<T> : RepositoryDecoratorBase<T> where T : Model, new()
     {
         private readonly ILogger _logger;
         private readonly Stopwatch _stopwatch = new Stopwatch();

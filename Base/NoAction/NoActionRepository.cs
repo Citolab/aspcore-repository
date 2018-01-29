@@ -5,7 +5,6 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Citolab.Repository.Extensions;
 using Citolab.Repository.Helpers;
-using Citolab.Repository.Model;
 
 
 #pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
@@ -18,7 +17,7 @@ namespace Citolab.Repository.NoAction
     ///     Base repository for no action
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class NoActionRepository<T> : IRepository<T> where T : ObjectBase, new()
+    public class NoActionRepository<T> : IRepository<T> where T : Model, new()
     {
         public IQueryable<T> AsQueryable() => new ConcurrentBag<T>().Clone().AsQueryable();
         public async Task<T> GetAsync(Guid id) => null;

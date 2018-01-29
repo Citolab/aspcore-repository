@@ -1,5 +1,4 @@
-﻿using Citolab.Repository.Model;
-using Citolab.Repository.Options;
+﻿using Citolab.Repository.Options;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 
@@ -30,6 +29,6 @@ namespace Citolab.Repository
         }
 
         /// <inheritdoc />
-        public abstract IRepository<T> GetRepository<T>() where T : ObjectBase, new();
+        public abstract IRepository<T> GetRepository<T>() where T : Model, new();
     }
 }

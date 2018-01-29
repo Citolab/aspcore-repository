@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using Citolab.Repository.Model;
 
 namespace Citolab.Repository
 {
@@ -10,7 +9,7 @@ namespace Citolab.Repository
     ///     Interface for retrieving data
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public interface IRepository<T> where T : ObjectBase, new()
+    public interface IRepository<T> where T : Model, new()
     {
         /// <summary>
         ///     Get all objects, linq queries can be done on the IQueryable collecion.

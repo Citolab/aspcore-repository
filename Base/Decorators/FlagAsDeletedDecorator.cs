@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Citolab.Repository.Model;
 using Microsoft.Extensions.Caching.Memory;
 
 namespace Citolab.Repository.Decorators
@@ -10,7 +9,7 @@ namespace Citolab.Repository.Decorators
     ///     Decorator to used flagging instead of deleting
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class FlagAsDeletedDecorator<T> : RepositoryDecoratorBase<T> where T : ObjectBase, new()
+    public class FlagAsDeletedDecorator<T> : RepositoryDecoratorBase<T> where T : Model, new()
     {
         /// <inheritdoc />
         public FlagAsDeletedDecorator(IMemoryCache memoryCache, IRepository<T> decoree) :

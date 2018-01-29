@@ -1,17 +1,17 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace Citolab.Repository.Model
+namespace Citolab.Repository
 {
     /// <summary>
     ///     Base class for all read models.
     /// </summary>
-    public abstract class ObjectBase
+    public abstract class Model
     {
         /// <summary>
         ///     Constructor
         /// </summary>
-        protected ObjectBase()
+        protected Model()
         {
             Id = Guid.NewGuid();
         }

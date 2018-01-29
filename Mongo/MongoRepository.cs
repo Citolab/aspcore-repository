@@ -4,14 +4,13 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Threading.Tasks;
 using Citolab.Repository.Helpers;
-using Citolab.Repository.Model;
 using Microsoft.Extensions.Logging;
 using MongoDB.Driver;
 
 namespace Citolab.Repository.Mongo
 {
     /// <inheritdoc />
-    public class MongoRepository<T> : IRepository<T> where T : ObjectBase, new()
+    public class MongoRepository<T> : IRepository<T> where T : Model, new()
     {
         protected readonly IMongoCollection<T> Collection;
         protected readonly ILogger Logger;

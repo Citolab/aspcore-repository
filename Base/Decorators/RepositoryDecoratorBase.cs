@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using Citolab.Repository.Model;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 
@@ -12,7 +11,7 @@ namespace Citolab.Repository.Decorators
     ///     Base class for Repository decorators.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public abstract class RepositoryDecoratorBase<T> : IRepository<T> where T : ObjectBase, new()
+    public abstract class RepositoryDecoratorBase<T> : IRepository<T> where T : Model, new()
     {
         private readonly IRepository<T> _decoree;
         protected readonly IMemoryCache MemoryCache;
