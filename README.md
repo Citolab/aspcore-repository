@@ -34,7 +34,7 @@ services.AddSqlServerRepository("MyDatabase", Configuration.GetConnectionString(
 
 ### Model
 
-An entity that must be stored in the database should inherit from ObjectBase.
+An entity that must be stored in the database should inherit from Model.
 
 
 ### API
@@ -86,7 +86,7 @@ Caching can be added using Mongo or SQL Server as database too. Adding the cachi
 
 ```C#
 [Cache(300)]
-public class User : ObjectBase
+public class User : Model
 {
 	//properties
 }
