@@ -2,7 +2,6 @@
 using Citolab.Repository.Helpers;
 using Citolab.Repository.NoAction;
 using Citolab.Repository.Options;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Newtonsoft.Json;
