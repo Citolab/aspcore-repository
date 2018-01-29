@@ -20,7 +20,6 @@ namespace Citolab.Repository.Mongo.Extensions
             // TryAdd will only add if there isn't yet a ILoggedInUserProvider registered.
             // if someone wants to use its own ILoggedInUserProvider, it should be added before calling this function.
             services.TryAddScoped<ILoggedInUserProvider, NoLoggedInUser>();
-            services.AddSingleton<IRepositoryFactory, NoActionFactory>();
         }
 
         /// <summary>
