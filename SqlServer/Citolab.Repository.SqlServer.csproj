@@ -6,9 +6,7 @@
     <Description>Repository using SqlServer database</Description>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Citolab.Repository" Version="2018.1.28.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.1" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Base\Citolab.Repository.csproj" />
   </ItemGroup>
 </Project>
