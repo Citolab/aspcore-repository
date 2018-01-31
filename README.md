@@ -62,7 +62,7 @@ public class UserController : Controller
         _repositoryFactory.GetRepository<User>().AddAsync(user);
 
     [HttpPut]
-    public Task<bool> ChangeName([FromBody] User user) =>
+    public Task<bool> Update([FromBody] User user) =>
         _repositoryFactory.GetRepository<User>().UpdateAsync(user);
 
     [HttpDelete("{id}")]
