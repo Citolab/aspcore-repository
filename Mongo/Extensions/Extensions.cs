@@ -10,7 +10,7 @@ namespace Citolab.Repository.Mongo.Extensions
 {
     public static class Extensions
     {
-        public static void AddMongoRepository(this IServiceCollection services, string databaseName, string connectionString)
+        public static IServiceCollection AddMongoRepository(this IServiceCollection services, string databaseName, string connectionString)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
             services.AddMemoryCache();
@@ -20,6 +20,7 @@ namespace Citolab.Repository.Mongo.Extensions
             // if someone wants to use its own ILoggedInUserProvider, it should be added before calling this function.
             services.TryAddScoped<ILoggedInUserProvider, NoLoggedInUser>();
             services.AddSingleton<IRepositoryFactory, MongoFactory>();
-        }     
+            return services;
+        }
     }
 }
