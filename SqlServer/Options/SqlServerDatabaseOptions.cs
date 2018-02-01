@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Citolab.Repository.Model;
+﻿using Citolab.Repository.Options;
 
-namespace Citolab.Repository.Options
+namespace Citolab.Repository.SqlServer.Options
 {
     public class SqlServerDatabaseOptions : ISqlServerDatabaseOptions
     {
