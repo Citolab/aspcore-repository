@@ -18,8 +18,9 @@ namespace Citolab.Repository.Mongo.Extensions
             services.AddSingleton<IRepositoryOptions>(new MongoDatabaseOptions(databaseName, connectionString));
             // TryAdd will only add if there isn't yet a ILoggedInUserProvider registered.
             // if someone wants to use its own ILoggedInUserProvider, it should be added before calling this function.
+            
             services.TryAddScoped<ILoggedInUserProvider, NoLoggedInUser>();
-            services.AddSingleton<IRepositoryFactory, MongoFactory>();
+            services.AddScoped<IRepositoryFactory, MongoFactory>();
             return services;
         }
     }
