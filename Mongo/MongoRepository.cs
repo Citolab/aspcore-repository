@@ -31,7 +31,7 @@ namespace Citolab.Repository.Mongo
             catch (Exception exception)
             {
                 Logger.LogCritical(
-                    $"Error while getting collection {typeof(T).Name} connecting to {mongoDatabase.Client.Settings.Server.Host}. Exception: {exception.Message}",
+                    $"Error while getting collection {typeof(T).Name} connecting to {mongoDatabase.Client.Settings.Server.Host}.",
                     exception);
                 throw;
             }
