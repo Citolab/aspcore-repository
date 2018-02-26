@@ -34,7 +34,7 @@ services.AddSqlServerRepository("MyDatabase", Configuration.GetConnectionString(
 
 ### Model
 
-An entity that must be stored in the database should inherit from ObjectBase.
+An entity that must be stored in the database should inherit from Model.
 
 
 ### API
@@ -62,7 +62,7 @@ public class UserController : Controller
         _repositoryFactory.GetRepository<User>().AddAsync(user);
 
     [HttpPut]
-    public Task<bool> ChangeName([FromBody] User user) =>
+    public Task<bool> Update([FromBody] User user) =>
         _repositoryFactory.GetRepository<User>().UpdateAsync(user);
 
     [HttpDelete("{id}")]
@@ -86,7 +86,7 @@ Caching can be added using Mongo or SQL Server as database too. Adding the cachi
 
 ```C#
 [Cache(300)]
-public class User : ObjectBase
+public class User : Model
 {
 	//properties
 }

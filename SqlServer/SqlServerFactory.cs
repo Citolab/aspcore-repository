@@ -8,7 +8,6 @@ using Citolab.Repository.Decorators;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using Citolab.Repository.Model;
 using Citolab.Repository.Options;
 
 namespace Citolab.Repository.SqlServer

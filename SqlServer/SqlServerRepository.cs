@@ -2,20 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
-using System.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage;
-using Citolab.Repository.Model;
 
 namespace Citolab.Repository.SqlServer
 {
     /// <summary>
     /// <typeparam name="T"></typeparam>
-    public class SqlServerRepository<T> : IRepository<T> where T : ObjectBase, new()
+    public class SqlServerRepository<T> : IRepository<T> where T : Citolab.Repository.Model, new()
     {
         private readonly SqlDatabaseContext _context;
         protected readonly ILogger Logger;
