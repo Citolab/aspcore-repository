@@ -32,13 +32,13 @@ namespace Citolab.Repository.Mongo
             if (!(options is IMongoDatabaseOptions mongoOptions)) throw new Exception("Options should be of type IMongoDatabaseOptions");
             _loggedInUserProvider = loggedInUserProvider;
             _logger = loggerFactory.CreateLogger(GetType());
-            var mongoClientSettings = new MongoClientSettings
-            {
-                Server = MongoServerAddress.Parse(mongoOptions.ConnectionString)
-            };
+            //var mongoClientSettings = new MongoClientSettings
+            //{
+            //    Server = MongoServerAddress.Parse(mongoOptions.ConnectionString)
+            //};
             try
             {
-                var client = new MongoClient(mongoClientSettings);
+                var client = new MongoClient(mongoOptions.ConnectionString);
                 var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
                 if (string.IsNullOrWhiteSpace(environment))
                 {
@@ -50,7 +50,7 @@ namespace Citolab.Repository.Mongo
             catch (Exception exception)
             {
                 _logger.LogCritical(
-                    $"Error while connecting to {mongoClientSettings.Server.Host}. Exception: {exception.Message}",
+                    $"Error while connecting to {mongoOptions.ConnectionString}. Exception: {exception.Message}",
                     exception);
                 throw;
             }
