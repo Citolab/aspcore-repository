@@ -50,8 +50,7 @@ namespace Citolab.Repository.Mongo
             catch (Exception exception)
             {
                 _logger.LogCritical(
-                    $"Error while connecting to {mongoOptions.ConnectionString}. Exception: {exception.Message}",
-                    exception);
+                    $"Error while connecting to {mongoOptions.ConnectionString}.", exception);
                 throw;
             }
         }
