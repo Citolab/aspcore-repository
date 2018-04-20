@@ -32,13 +32,22 @@ namespace Citolab.Repository.Mongo
             if (!(options is IMongoDatabaseOptions mongoOptions)) throw new Exception("Options should be of type IMongoDatabaseOptions");
             _loggedInUserProvider = loggedInUserProvider;
             _logger = loggerFactory.CreateLogger(GetType());
-            //var mongoClientSettings = new MongoClientSettings
-            //{
-            //    Server = MongoServerAddress.Parse(mongoOptions.ConnectionString)
-            //};
+            MongoClient client = null;
             try
             {
-                var client = new MongoClient(mongoOptions.ConnectionString);
+                try
+                {
+                    var mongoClientSettings = new MongoClientSettings
+                    {
+                        Server = MongoServerAddress.Parse(mongoOptions.ConnectionString)
+                    };
+                    client = new MongoClient(mongoClientSettings);
+                }
+                catch
+                {
+                    client = new MongoClient(mongoOptions.ConnectionString);
+                }
+
                 var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
                 if (string.IsNullOrWhiteSpace(environment))
                 {
