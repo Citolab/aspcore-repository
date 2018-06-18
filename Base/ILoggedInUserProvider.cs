@@ -7,6 +7,7 @@ namespace Citolab.Repository
     /// </summary>
     public interface ILoggedInUserProvider
     {
+        object UserObject { get; set; }
         Guid? GetUserId();
     }
 }
