@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using System.Collections.Concurrent;
 using Citolab.Repository.Decorators;
-using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
 using Citolab.Repository.Options;
 
 namespace Citolab.Repository.SqlServer

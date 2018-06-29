@@ -11,21 +11,20 @@ namespace Citolab.Repository.Decorators
     /// <typeparam name="T"></typeparam>
     public class FillDefaultValueDecorator<T> : RepositoryDecoratorBase<T> where T : Model, new()
     {
-        private readonly ILoggedInUserProvider _loggedInUserProvider;
+        private readonly Guid? _actorId;
 
         /// <inheritdoc />
-        public FillDefaultValueDecorator(IMemoryCache memoryCache, IRepository<T> decoree, 
-            ILoggedInUserProvider loggedInUserProvider)
+        public FillDefaultValueDecorator(IMemoryCache memoryCache, IRepository<T> decoree, Guid? actorId)
             : base(memoryCache, decoree)
         {
-            _loggedInUserProvider = loggedInUserProvider;
+            _actorId = actorId;
         }
 
         /// <inheritdoc />
         public override async Task<T> AddAsync(T document)
         {
             var userId = document.CreatedByUserId == Guid.Empty
-                ? _loggedInUserProvider?.GetUserId()
+                ? _actorId
                 : document.CreatedByUserId;
             if (document.Id == default(Guid)) document.Id = Guid.NewGuid();
             if (userId.HasValue)
@@ -51,11 +50,8 @@ namespace Citolab.Repository.Decorators
         /// <inheritdoc />
         public override async Task<bool> UpdateAsync(T document)
         {
-            var userId = _loggedInUserProvider?.GetUserId();
-            if (!userId.HasValue || userId.Value == Guid.Empty)
-            {
-                userId = _loggedInUserProvider?.GetUserId();
-            }
+            var userId = _actorId;
+
             if (userId.HasValue)
                 document.LastModifiedByUserId =
                     !OverrideDefaultValues.FillDefaulValues && document.LastModifiedByUserId != default(Guid)

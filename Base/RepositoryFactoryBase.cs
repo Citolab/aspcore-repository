@@ -1,4 +1,5 @@
-﻿using Citolab.Repository.Options;
+﻿using System;
+using Citolab.Repository.Options;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 
@@ -9,6 +10,7 @@ namespace Citolab.Repository
     /// </summary>
     public abstract class RepositoryFactoryBase : IRepositoryFactory
     {
+        public Guid? ActorId { get; set; }
         protected readonly ILoggerFactory LoggerFactory;
         protected readonly bool LogTime;
         protected readonly IMemoryCache MemoryCache;

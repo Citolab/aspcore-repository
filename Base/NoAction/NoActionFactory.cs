@@ -12,7 +12,7 @@ namespace Citolab.Repository.NoAction
     /// </summary>
     public class NoActionFactory : RepositoryFactoryBase
     {
-        private readonly ILoggedInUserProvider _loggedInUserProvider;
+        private readonly Guid? _actorId;
         private readonly ILogger _logger;
 
         /// <summary>
@@ -21,11 +21,11 @@ namespace Citolab.Repository.NoAction
         /// <param name="memoryCache"></param>
         /// <param name="loggerFactory"></param>
         /// <param name="options"></param>
-        /// <param name="loggedInUserProvider"></param>
-        public NoActionFactory(IMemoryCache memoryCache, ILoggerFactory loggerFactory, IRepositoryOptions options, ILoggedInUserProvider loggedInUserProvider)
+        /// <param name="actorId"></param>
+        public NoActionFactory(IMemoryCache memoryCache, ILoggerFactory loggerFactory, IRepositoryOptions options, Guid? actorId)
             : base(memoryCache, loggerFactory, options)
         {
-            _loggedInUserProvider = loggedInUserProvider;
+            _actorId = actorId;
             Repositories = new ConcurrentDictionary<Type, object>();
             _logger = loggerFactory.CreateLogger(GetType());
         }
@@ -45,7 +45,7 @@ namespace Citolab.Repository.NoAction
             var noActionRepository = new FlagAsDeletedDecorator<T>(MemoryCache,
                 new FillDefaultValueDecorator<T>(MemoryCache,
                     new CacheDecorator<T>(MemoryCache, true,
-                        new NoActionRepository<T>()), _loggedInUserProvider));
+                        new NoActionRepository<T>()), _actorId));
             if (LogTime)
             {
                 var timeLoggedNoActionRepository =

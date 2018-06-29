@@ -14,7 +14,6 @@ namespace Citolab.Repository.Mongo
     /// </summary>
     public class MongoFactory : RepositoryFactoryBase
     {
-        private readonly ILoggedInUserProvider _loggedInUserProvider;
         private readonly ILogger _logger;
         private readonly IMongoDatabase _mongoDatabase;
 
@@ -24,17 +23,15 @@ namespace Citolab.Repository.Mongo
         /// <param name="memoryCache"></param>
         /// <param name="loggerFactory"></param>
         /// <param name="options"></param>
-        /// <param name="loggedInUserProvider"></param>
         public MongoFactory(IMemoryCache memoryCache, ILoggerFactory loggerFactory,
-            IRepositoryOptions options, ILoggedInUserProvider loggedInUserProvider)
+            IRepositoryOptions options)
             : base(memoryCache, loggerFactory, options)
         {
             if (!(options is IMongoDatabaseOptions mongoOptions)) throw new Exception("Options should be of type IMongoDatabaseOptions");
-            _loggedInUserProvider = loggedInUserProvider;
             _logger = loggerFactory.CreateLogger(GetType());
-            MongoClient client = null;
             try
             {
+                MongoClient client;
                 try
                 {
                     var mongoClientSettings = new MongoClientSettings
@@ -79,7 +76,7 @@ namespace Citolab.Repository.Mongo
             var mongoRepository = new FlagAsDeletedDecorator<T>(MemoryCache,
                 new FillDefaultValueDecorator<T>(MemoryCache,
                     new CacheDecorator<T>(MemoryCache, false,
-                        new MongoRepository<T>(LoggerFactory, _mongoDatabase)), _loggedInUserProvider));
+                        new MongoRepository<T>(LoggerFactory, _mongoDatabase)), ActorId));
             if (LogTime)
             {
                 var timeLoggedMongoRepository = new LogTimeDecorator<T>(MemoryCache, mongoRepository, _logger);

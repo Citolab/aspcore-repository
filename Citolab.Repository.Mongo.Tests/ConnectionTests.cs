@@ -27,10 +27,7 @@ namespace Citolab.Repository.Mongo.Tests
             var sp = services.BuildServiceProvider();
             var repositoryFactory = sp.GetService<IRepositoryFactory>();
 
-            Assert.ThrowsException<TimeoutException>(() =>
-            {
-                var testModelRepo = repositoryFactory.GetRepository<TestModel>();
-            });
+            Assert.ThrowsException<TimeoutException>(() => { repositoryFactory.GetRepository<TestModel>(); });
         }
     }
 }

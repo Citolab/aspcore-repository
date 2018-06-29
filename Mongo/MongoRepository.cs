@@ -44,30 +44,20 @@ namespace Citolab.Repository.Mongo
         public Task<T> GetAsync(Guid id) => Collection.FindAsync(o => o.Id == id).Result?.SingleOrDefaultAsync();
 
         /// <inheritdoc />
-        public async Task<bool> UpdateAsync(T document, Guid? userId) =>
+        public async Task<bool> UpdateAsync(T document) =>
             await Collection.FindOneAndReplaceAsync(i => i.Id == document.Id, document) != null;
 
-        /// <inheritdoc />
-        public async Task<bool> UpdateAsync(T document) =>
-            await UpdateAsync(document, document.LastModifiedByUserId);
 
         /// <inheritdoc />
-        public async Task<T> AddAsync(T document, Guid? userId)
+        public async Task<T> AddAsync(T document)
         {
             await Collection.InsertOneAsync(document);
             return document;
         }
 
         /// <inheritdoc />
-        public async Task<T> AddAsync(T document) => await AddAsync(document, document.CreatedByUserId);
-
-        /// <inheritdoc />
-        public async Task<bool> DeleteAsync(Guid id, Guid? userId) =>
-            await Collection.FindOneAndDeleteAsync(i => i.Id == id) != null;
-
-        /// <inheritdoc />
         public async Task<bool> DeleteAsync(Guid id) =>
-            await DeleteAsync(id, Guid.Empty);
+            await Collection.FindOneAndDeleteAsync(i => i.Id == id) != null;
 
         /// <inheritdoc />
         public async Task<long> GetCountAsync() =>

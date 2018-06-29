@@ -41,9 +41,8 @@ namespace Citolab.Repository.Decorators
         {
             get
             {
-                ConcurrentDictionary<string, Model> coll;
                 if (MemoryCache == null) return new ConcurrentDictionary<string, Model>();
-                return MemoryCache.TryGetValue(_collectionKey, out coll)
+                return MemoryCache.TryGetValue(_collectionKey, out ConcurrentDictionary<string, Model> coll)
                     ? coll
                     : new ConcurrentDictionary<string, Model>();
             }

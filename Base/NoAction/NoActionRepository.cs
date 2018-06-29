@@ -4,7 +4,6 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Citolab.Repository.Extensions;
-using Citolab.Repository.Helpers;
 
 
 #pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
@@ -21,11 +20,8 @@ namespace Citolab.Repository.NoAction
     {
         public IQueryable<T> AsQueryable() => new ConcurrentBag<T>().Clone().AsQueryable();
         public async Task<T> GetAsync(Guid id) => null;
-        public async Task<bool> UpdateAsync(T document, Guid? userId) => true;
         public async Task<bool> UpdateAsync(T document) => true;
-        public async Task<T> AddAsync(T document, Guid? userId) => document.Clone();
         public async Task<T> AddAsync(T document) => document.Clone();
-        public async Task<bool> DeleteAsync(Guid id, Guid? userId) => true;
         public async Task<bool> DeleteAsync(Guid id) => true;
         public async Task<long> GetCountAsync() => 0;
         public async Task<long> GetCountAsync(Expression<Func<T, bool>> filter) => 0;

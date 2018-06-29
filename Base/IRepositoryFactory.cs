@@ -1,10 +1,17 @@
-﻿namespace Citolab.Repository
+﻿using System;
+
+namespace Citolab.Repository
 {
     /// <summary>
     ///     Interface for repository factory
     /// </summary>
     public interface IRepositoryFactory
     {
+        /// <summary>
+        /// ActorId 
+        /// </summary>
+        Guid? ActorId { get; set; }
+
         /// <summary>
         ///     Get the repository
         /// </summary>

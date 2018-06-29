@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
@@ -10,9 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Citolab.Repository.SqlServer
 {
-    /// <summary>
-    /// <typeparam name="T"></typeparam>
-    public class SqlServerRepository<T> : IRepository<T> where T : Citolab.Repository.Model, new()
+    public class SqlServerRepository<T> : IRepository<T> where T : Model, new()
     {
         private readonly SqlDatabaseContext _context;
         protected readonly ILogger Logger;
@@ -37,7 +34,7 @@ namespace Citolab.Repository.SqlServer
         }
 
         public Task<T> GetAsync(Guid id) =>
-            Task.Run<T>(() =>
+            Task.Run(() =>
             {
                 try
                 {
@@ -51,7 +48,7 @@ namespace Citolab.Repository.SqlServer
             });
 
 
-        public Task<bool> UpdateAsync(T document, Guid? userId) =>
+        public Task<bool> UpdateAsync(T document) =>
             Task.Run(() =>
             {
                 try
@@ -70,30 +67,23 @@ namespace Citolab.Repository.SqlServer
                 }
             });
 
-        public Task<bool> UpdateAsync(T document) =>
-            UpdateAsync(document, null);
-
-        public Task<T> AddAsync(T document, Guid? userId) =>
-            Task.Run(() =>
-            {
-                var ret = _context.AddAsync(document)?.Result?.Entity;
-                try
-                {
-                    _context.SaveChanges();
-                }
-                catch
-                {
-                    CreateTablesOnException();
-                    _context.SaveChanges();
-                }
-                return ret;
-            });
-
-
         public Task<T> AddAsync(T document) =>
-            AddAsync(document);
+             Task.Run(() =>
+             {
+                 var ret = _context.AddAsync(document)?.Result?.Entity;
+                 try
+                 {
+                     _context.SaveChanges();
+                 }
+                 catch
+                 {
+                     CreateTablesOnException();
+                     _context.SaveChanges();
+                 }
+                 return ret;
+             });
 
-        public Task<bool> DeleteAsync(Guid id, Guid? userId) =>
+        public Task<bool> DeleteAsync(Guid id) =>
             Task.Run(() =>
             {
                 try
@@ -112,10 +102,6 @@ namespace Citolab.Repository.SqlServer
                 }
                 return true;
             });
-
-
-        public Task<bool> DeleteAsync(Guid id) =>
-             DeleteAsync(id, null);
 
         public Task<long> GetCountAsync() =>
             GetCountAsync(s => true);
