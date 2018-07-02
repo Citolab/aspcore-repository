@@ -21,7 +21,7 @@ namespace Citolab.Repository.NoAction
         /// <param name="loggerFactory"></param>
         /// <param name="options"></param>
         /// <param name="actorId"></param>
-        public NoActionFactory(IMemoryCache memoryCache, ILoggerFactory loggerFactory, IRepositoryOptions options, Guid? actorId)
+        public NoActionFactory(IMemoryCache memoryCache, ILoggerFactory loggerFactory, IRepositoryOptions options)
             : base(memoryCache, loggerFactory, options)
         {
             Repositories = new ConcurrentDictionary<Type, object>();
