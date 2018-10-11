@@ -36,7 +36,8 @@ namespace Citolab.Repository.Mongo
                 {
                     var mongoClientSettings = new MongoClientSettings
                     {
-                        Server = MongoServerAddress.Parse(mongoOptions.ConnectionString)
+                        Server = MongoServerAddress.Parse(mongoOptions.ConnectionString),
+                        MaxConnectionIdleTime = TimeSpan.FromMinutes(1)
                     };
                     client = new MongoClient(mongoClientSettings);
                 }
