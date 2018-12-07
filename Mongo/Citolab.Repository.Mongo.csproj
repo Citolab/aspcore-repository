@@ -6,7 +6,7 @@
     <Description>Repository using Mongo database</Description>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="MongoDB.Driver" Version="2.6.1" />
+    <PackageReference Include="MongoDB.Driver" Version="2.7.2" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Base\Citolab.Repository.csproj" />
