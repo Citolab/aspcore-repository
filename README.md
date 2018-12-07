@@ -6,7 +6,6 @@ There is also experimental support for SQL Server.
 Packages can be installed using NuGet:
 - Install-Package Citolab.Repository (in-memory)
 - Install-Package Citolab.Repository.Mongo (MongoDB)
-- Install-Package Citolab.Repository.SqlServer (SQL server)
 
 ## IRepository Usage
 
@@ -20,15 +19,6 @@ services.AddInMemoryRepository();
 ```C#
 var services = new ServiceCollection();
 services.AddMongoRepository("MyDatabase", Configuration.GetConnectionString("MongoDB"));
-
-```
-
-### Sql Server
-
-Sql server support is very experimental and will contain bugs. 
-```C#
-var services = new ServiceCollection();
-services.AddSqlServerRepository("MyDatabase", Configuration.GetConnectionString("SqlServer"));
 
 ```
 
