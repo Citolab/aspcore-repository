@@ -61,11 +61,11 @@ namespace Citolab.Repository.Mongo
 
         /// <inheritdoc />
         public async Task<long> GetCountAsync() =>
-            await Collection.CountAsync(i => true);
+            await Collection.CountDocumentsAsync(i => true);
 
         /// <inheritdoc />
         public async Task<long> GetCountAsync(Expression<Func<T, bool>> filter) =>
-             await Collection.CountAsync(filter);
+             await Collection.CountDocumentsAsync(filter);
 
         /// <inheritdoc />
         public async Task<bool> AnyAsync() => await GetCountAsync() > 0;
@@ -81,7 +81,7 @@ namespace Citolab.Repository.Mongo
         private void EnsureIndexes()
         {
             // We can only index a collection if there's at least one element, otherwise it does nothing
-            if (Collection.Count(i => true) <= 0) return;
+            if (Collection.CountDocumentsAsync(i => true).Result <= 0) return;
 
             // If there are more than one indexes present (the default on Id is created by mongo), do nothing. This means that if indexes
             // need to change, the collection needs to be reinitialized (or manage the indexes from Robomongo)
@@ -104,13 +104,13 @@ namespace Citolab.Repository.Mongo
             var indexKeysDefinition = attribute.Descending
                 ? builder.Descending(indexFieldName)
                 : builder.Ascending(indexFieldName);
-            var createIndexOptions = new CreateIndexOptions
+            var createIndexOptions = new CreateIndexModel<T>(indexKeysDefinition, new CreateIndexOptions
             {
                 Unique = attribute.Unique,
                 Sparse = attribute.Sparse
-            };
+            });
             Logger.LogDebug($"Adding index on field {indexFieldName} to collection {typeof(T).Name}");
-            Collection.Indexes.CreateOne(indexKeysDefinition, createIndexOptions);
+            Collection.Indexes.CreateOne(createIndexOptions);
         }
     }
 }

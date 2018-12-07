@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\repos\aspcore-repository" t="IncludeFlat">
+      <e p="Base" t="IncludeRecursive">
+        <e p=".gitignore" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Citolab.Repository.csproj" t="IncludeRecursive" />
+        <e p="Citolab.Repository.nuspec" t="Include" />
+        <e p="Decorators" t="Include">
+          <e p="CacheDecorator.cs" t="Include" />
+          <e p="FillDefaultValueDecorator.cs" t="Include" />
+          <e p="FlagAsDeletedDecorator.cs" t="Include" />
+          <e p="LogTimeDecorator.cs" t="Include" />
+          <e p="RepositoryDecoratorBase.cs" t="Include" />
+        </e>
+        <e p="Extensions" t="Include">
+          <e p="Extensions.cs" t="Include" />
+        </e>
+        <e p="Helpers" t="Include">
+          <e p="CacheAttribute.cs" t="Include" />
+          <e p="EnsureIndexAttribute.cs" t="Include" />
+          <e p="OverrideDefaultValues.cs" t="Include" />
+        </e>
+        <e p="IRepository.cs" t="Include" />
+        <e p="IRepositoryFactory.cs" t="Include" />
+        <e p="Model.cs" t="Include" />
+        <e p="NoAction" t="Include">
+          <e p="NoActionFactory.cs" t="Include" />
+          <e p="NoActionRepository.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="Citolab.Repository.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Options" t="Include">
+          <e p="IInMemoryDatabaseOptions.cs" t="Include" />
+          <e p="InMemoryDatabaseOptions.cs" t="Include" />
+          <e p="IRepositoryOptions.cs" t="Include" />
+        </e>
+        <e p="RepositoryFactoryBase.cs" t="Include" />
+      </e>
+      <e p="Citolab.Repository.Mongo.Tests" t="IncludeRecursive">
+        <e p="appsettings.json" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Citolab.Repository.Mongo.Tests.csproj" t="IncludeRecursive" />
+        <e p="ConnectionTests.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.0" t="Include">
+              <e p="Citolab.Repository.Mongo.Tests.AssemblyInfo.cs" t="Include" />
+              <e p="Citolab.Repository.Mongo.Tests.Program.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="TestModel.cs" t="Include" />
+      </e>
+      <e p="Citolab.Repository.sln" t="IncludeFlat" />
+      <e p="Mongo" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Citolab.Repository.Mongo.csproj" t="IncludeRecursive" />
+        <e p="Citolab.Repository.Mongo.nuspec" t="Include" />
+        <e p="Extensions" t="Include">
+          <e p="Extensions.cs" t="Include" />
+        </e>
+        <e p="MongoFactory.cs" t="Include" />
+        <e p="MongoRepository.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="Citolab.Repository.Mongo.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Options" t="Include">
+          <e p="IMongoDatabaseOptions.cs" t="Include" />
+          <e p="MongoDatabaseOptions.cs" t="Include" />
+        </e>
+      </e>
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="README.md" t="Include" />
+      <e p="Solution Items" t="Include" />
+      <e p="SqlServer" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Citolab.Repository.SqlServer.csproj" t="IncludeRecursive" />
+        <e p="Citolab.Repository.SqlServer.nuspec" t="Include" />
+        <e p="Extensions" t="Include">
+          <e p="Extensions.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="Citolab.Repository.SqlServer.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Options" t="Include">
+          <e p="ISqlServerDatabaseOptions.cs" t="Include" />
+          <e p="SqlServerDatabaseOptions.cs" t="Include" />
+        </e>
+        <e p="SqlDatabaseContext.cs" t="Include" />
+        <e p="SqlServerFactory.cs" t="Include" />
+        <e p="SqlServerRepository.cs" t="Include" />
+      </e>
+    </e>
+    <e p="C:\Users\marcelh\.nuget\packages\mstest.testadapter\1.3.1\build\_common\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll" t="Include" />
+    <e p="C:\Users\marcelh\.nuget\packages\mstest.testadapter\1.3.1\build\_common\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll" t="Include" />
+    <e p="C:\Users\marcelh\.nuget\packages\mstest.testadapter\1.3.1\build\netcoreapp1.0\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll" t="Include" />
+    <e p="C:\Users\marcelh\.Rider2018.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\marcelh\.Rider2018.2\system\resharper-host\local\Transient\ReSharperHost\v182\SolutionCaches\_Citolab.Repository.1081678120.00" t="ExcludeRecursive" />
+  </component>
+</project>
