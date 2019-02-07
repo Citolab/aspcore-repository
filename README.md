@@ -1,4 +1,6 @@
-﻿# Citolab Repository for ASP.NET Core
+﻿# Deprecated: Citolab Repository for ASP.NET Core
+ 
+ # This repository is deprecated. Please use: https://github.com/Citolab/persistence
 
 This is a repository library that can be configured to use MongoDB or an in-memory database (using MemoryCache).
 There is also experimental support for SQL Server.
