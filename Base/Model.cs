@@ -1,5 +1,5 @@
 ﻿using System;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Citolab.Repository
 {
@@ -19,7 +19,7 @@ namespace Citolab.Repository
         /// <summary>
         ///     Unique identifier.
         /// </summary>
-        [JsonProperty(PropertyName = "id")]
+        [JsonPropertyName("id")]
         public Guid Id { get; set; }
 
         /// <summary>

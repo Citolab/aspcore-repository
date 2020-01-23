@@ -1,8 +1,8 @@
 ﻿using System;
 using Citolab.Repository.NoAction;
 using Citolab.Repository.Options;
+using Force.DeepCloner;
 using Microsoft.Extensions.DependencyInjection;
-using Newtonsoft.Json;
 
 namespace Citolab.Repository.Extensions
 {
@@ -25,6 +25,6 @@ namespace Citolab.Repository.Extensions
         /// <param name="toClone"></param>
         /// <returns></returns>
         public static T Clone<T>(this T toClone) where T : class =>
-            JsonConvert.DeserializeObject<T>(JsonConvert.SerializeObject(toClone));        
+            toClone.DeepClone();
     }
 }
