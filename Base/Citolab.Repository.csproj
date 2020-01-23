@@ -4,6 +4,7 @@
     <Authors>Marcel Hoekstra, Tjeerd Hans Terpstra</Authors>
     <Company>Citolab</Company>
     <Description>Repository using in-memory database</Description>
+    <ProjectGuid>{B1AD0FF7-D98E-40AF-B689-C7E03AFD5265}</ProjectGuid>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="DeepCloner" Version="0.10.2" />
