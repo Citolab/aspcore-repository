@@ -7,7 +7,7 @@
     <ProjectGuid>{E3F91F31-20BE-427E-B1C5-18DFDFF9223B}</ProjectGuid>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="MongoDB.Driver" Version="2.10.1" />
+    <PackageReference Include="MongoDB.Driver" Version="2.19.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Base\Citolab.Repository.csproj" />
